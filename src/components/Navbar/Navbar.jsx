@@ -187,7 +187,7 @@ export default function Navbar() {
               <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
               <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
             </svg>
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">3</span>
+            <span className="absolute -top-1 -right-1 w-4 h-4  text-white text-[10px] font-bold rounded-full flex items-center justify-center"></span>
           </button>
 
           {userLogin ? (

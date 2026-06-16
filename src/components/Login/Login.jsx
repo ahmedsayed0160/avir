@@ -97,7 +97,7 @@ export default function Login() {
     };
 
     axios
-      .post(`http://avir1.runasp.net/api/Auth/login`, payload)
+      .post(`https://avir.runasp.net/api/Auth/login`, payload)
       .then((res) => {
         setIsLoading(false);
         if (res.data.token) {
