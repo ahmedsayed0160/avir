@@ -7,8 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
 import { useLanguage } from "../../components/LanguageContext/LanguageContext"; // ← جديد
 import { Eye, EyeOff } from "lucide-react";
-import logo from "../../../public/Pink_Breast_Cancer_Awareness_Instagram_Post__8_-removebg-preview.png";
-
+import logo from "/Pink_Breast_Cancer_Awareness_Instagram_Post__8_-removebg-preview.png";
 // 🌍 الترجمات
 const translations = {
   en: {
@@ -24,8 +23,9 @@ const translations = {
     login: "Login",
     register: "Register",
     emailError: "Invalid email",
-    passwordError: "Must include at least 1 capital letter, 1 small letter, 1 special char, 1 number, min length 8",
-    loginFailed: "Login failed"
+    passwordError:
+      "Must include at least 1 capital letter, 1 small letter, 1 special char, 1 number, min length 8",
+    loginFailed: "Login failed",
   },
   ar: {
     title1: "تسجيل الدخول إلى",
@@ -40,9 +40,10 @@ const translations = {
     login: "تسجيل الدخول",
     register: "إنشاء حساب",
     emailError: "بريد إلكتروني غير صالح",
-    passwordError: "يجب أن تحتوي على حرف كبير وحرف صغير ورقم ورمز خاص، 8 أحرف على الأقل",
-    loginFailed: "فشل تسجيل الدخول"
-  }
+    passwordError:
+      "يجب أن تحتوي على حرف كبير وحرف صغير ورقم ورمز خاص، 8 أحرف على الأقل",
+    loginFailed: "فشل تسجيل الدخول",
+  },
 };
 
 export default function Login() {
@@ -50,10 +51,10 @@ export default function Login() {
   const [apiError, setApiError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   let { setuserLogin } = useContext(UserContext);
-  
+
   // ← استخدم LanguageContext بدل useState
   const { lang } = useLanguage();
-  
+
   const [acceptPolicy, setAcceptPolicy] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -65,7 +66,7 @@ export default function Login() {
       .string()
       .regex(
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-        t.passwordError
+        t.passwordError,
       ),
   });
 
@@ -110,18 +111,22 @@ export default function Login() {
       })
       .catch((err) => {
         setIsLoading(false);
-        const errorMsg = err.response?.data?.message || err.response?.data?.error || t.loginFailed;
+        const errorMsg =
+          err.response?.data?.message ||
+          err.response?.data?.error ||
+          t.loginFailed;
         setApiError(errorMsg);
       });
   }
 
   return (
-    <div className={`min-h-screen bg-white ${lang === 'ar' ? 'rtl' : 'ltr'}`} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-      
+    <div
+      className={`min-h-screen bg-white ${lang === "ar" ? "rtl" : "ltr"}`}
+      dir={lang === "ar" ? "rtl" : "ltr"}
+    >
       {/* 🔝 Navbar المبسطة - بدون Language Dropdown */}
       <nav className="w-full bg-pink-200 shadow-sm">
         <div className="max-w-screen-xl flex items-center justify-between mx-auto py-3 px-4">
-          
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img src={logo} alt="logo" className="w-auto h-16 object-contain" />
@@ -129,23 +134,20 @@ export default function Login() {
 
           {/* اليمين: Login | Register فقط */}
           <div className="flex items-center gap-3">
-            
-            <Link 
-              to="/login" 
+            <Link
+              to="/login"
               className="px-6 py-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition text-sm font-medium shadow-sm"
             >
               {t.login}
             </Link>
 
-            <Link 
-              to="/register" 
+            <Link
+              to="/register"
               className="px-6 py-2 rounded-full bg-white text-pink-600 border-2 border-pink-600 hover:bg-pink-50 transition text-sm font-medium shadow-sm"
             >
               {t.register}
             </Link>
-
           </div>
-
         </div>
       </nav>
 
@@ -228,7 +230,9 @@ export default function Login() {
               className="text-sm text-gray-900 hover:underline whitespace-nowrap"
             >
               {t.forgotPassword}{" "}
-              <span className="font-medium underline text-pink-700">{t.resetHere}</span>
+              <span className="font-medium underline text-pink-700">
+                {t.resetHere}
+              </span>
             </a>
           </div>
 
