@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useLanguage } from '../LanguageContext/LanguageContext';
-import heroImg from "../../../public/ChatGPT Image Nov 22, 2025, 11_46_24 PM.png";
+import something from "/ChatGPT Image Nov 22, 2025, 11_46_24 PM.png";
 import treatmentImg from "../../../public/WhatsApp Image 2026-02-24 at 12.04.42 AM.jpeg";
 import communityImg from "../../../public/WhatsApp Image 2026-02-24 at 12.04.42111 AM.jpeg";
 
