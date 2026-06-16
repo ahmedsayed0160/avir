@@ -1,4 +1,10 @@
+@custom-variant dark (&:where(.dark, .dark *));
 @import "tailwindcss";
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
+@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy:ital,wght@0,400..700;1,400..700&display=swap');
+@theme {
+
+    --font-Poltawski:'Poltawski Nowy' , 'serif'
+}
