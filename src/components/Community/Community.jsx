@@ -114,7 +114,7 @@ const TreatmentFollowUp = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
+    <div className="min-h-screen bg-gray-50 font-sans pt-6">
 
       {/* Hero */}
       <div className="pt-20 px-4">
