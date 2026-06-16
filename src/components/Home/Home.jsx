@@ -2,9 +2,11 @@ import photo2 from "../../../public/pexels-leeloothefirst-7805645.jpg"
 import photohome from "../../../public/pexels-thirdman-7659739.jpg"
 import photo3 from "../../../public/pexels-thirdman-7659895.jpg"
 import { useLanguage } from "../LanguageContext/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const { lang } = useLanguage();
+  const navigate = useNavigate();
 
   const t = {
     en: {
@@ -17,7 +19,6 @@ export default function Home() {
       joinCommunity: "Join Community",
       aboutTitle: "About Our Platform",
       aboutText: "Early awareness is the key to protection — our platform helps you detect symptoms, self-check, and find support.",
-      more: "More",
       impactTitle: "Impact of Early Detection",
       impactSubtitle: "The numbers speak for themselves",
       deathsTitle: "Decrease in Deaths",
@@ -58,7 +59,6 @@ export default function Home() {
       joinCommunity: "انضمي للمجتمع",
       aboutTitle: "عن منصتنا",
       aboutText: "التوعية المبكرة هي مفتاح الحماية — منصتنا تساعدك في اكتشاف الأعراض، الفحص الذاتي، والحصول على الدعم.",
-      more: "المزيد",
       impactTitle: "تأثير الاكتشاف المبكر",
       impactSubtitle: "الأرقام تتحدث عن نفسها",
       deathsTitle: "انخفاض الوفيات",
@@ -94,17 +94,13 @@ export default function Home() {
   return (
     <div className={lang === 'ar' ? 'rtl' : 'ltr'} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
 
-      {/* Hero Section - نفس الشكل الأصلي بس responsive */}
+      {/* Hero Section */}
       <div className='relative w-full h-screen min-h-[500px] overflow-hidden'>
-        <img src={photohome} 
-          className='absolute top-0 left-0 w-full h-full object-cover z-0' 
-          alt="" 
+        <img src={photohome}
+          className='absolute top-0 left-0 w-full h-full object-cover z-0'
+          alt=""
         />
-        
-        {/* Content - positioned from left like original */}
         <div className="relative z-10 h-full flex flex-col justify-center items-start px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 pt-16">
-          
-          {/* Title */}
           <div className="mb-2">
             <h1 className='font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight'>
               {t.heroTitle1}
@@ -113,33 +109,33 @@ export default function Home() {
               {t.heroTitle2}
             </h2>
           </div>
-          
-          {/* Description */}
           <div className="mt-4 sm:mt-6 max-w-xl">
-            <p className='font-bold text-sm sm:text-base md:text-lg lg:text-xl text-white leading-relaxed'>
-              {t.heroDesc1}
-            </p>
-            <p className='font-bold text-sm sm:text-base md:text-lg lg:text-xl text-white leading-relaxed'>
-              {t.heroDesc2}
-            </p>
-            <p className='font-bold text-sm sm:text-base md:text-lg lg:text-xl text-white leading-relaxed'>
-              {t.heroDesc3}
-            </p>
+            <p className='font-bold text-sm sm:text-base md:text-lg lg:text-xl text-white leading-relaxed'>{t.heroDesc1}</p>
+            <p className='font-bold text-sm sm:text-base md:text-lg lg:text-xl text-white leading-relaxed'>{t.heroDesc2}</p>
+            <p className='font-bold text-sm sm:text-base md:text-lg lg:text-xl text-white leading-relaxed'>{t.heroDesc3}</p>
           </div>
-          
-          {/* Buttons */}
           <div className='flex flex-col sm:flex-row gap-3 mt-6 sm:mt-8'>
-            <button type="button" className="text-white bg-pink-500 hover:bg-pink-600 focus:outline-none focus:ring-4 focus:ring-pink-300 font-bold rounded-full text-sm px-5 py-2.5 transition-all duration-300 w-full sm:w-auto">
+            {/* ✅ Check Now → /awarenss3 */}
+            <button
+              onClick={() => navigate("/awarenss3")}
+              type="button"
+              className="text-white bg-pink-500 hover:bg-pink-600 focus:outline-none focus:ring-4 focus:ring-pink-300 font-bold rounded-full text-sm px-5 py-2.5 transition-all duration-300 w-full sm:w-auto"
+            >
               {t.checkNow}
             </button>
-            <button type="button" className="bg-white hover:bg-gray-100 text-gray-800 focus:outline-none focus:ring-4 focus:ring-pink-300 font-bold rounded-full text-sm px-5 py-2.5 transition-all duration-300 w-full sm:w-auto">
+            {/* ✅ Join Community → /community */}
+            <button
+              onClick={() => navigate("/community")}
+              type="button"
+              className="bg-white hover:bg-gray-100 text-gray-800 focus:outline-none focus:ring-4 focus:ring-pink-300 font-bold rounded-full text-sm px-5 py-2.5 transition-all duration-300 w-full sm:w-auto"
+            >
               {t.joinCommunity}
             </button>
           </div>
         </div>
       </div>
 
-      {/* About Section */}
+      {/* About Section — بدون زرار More */}
       <section id="about" className="flex flex-col md:flex-row items-center justify-center py-16 px-6 md:px-16 bg-gray-50 gap-8">
         <div className="w-full md:w-1/2">
           <img src={photo2} className="rounded-lg shadow-lg object-cover w-full h-[300px] md:h-[400px]" alt="" />
@@ -147,9 +143,6 @@ export default function Home() {
         <div className="w-full md:w-1/2 bg-white shadow-2xl rounded-lg p-6 md:p-8">
           <h1 className="font-bold text-2xl md:text-3xl text-rose-950 mb-4">{t.aboutTitle}</h1>
           <p className="text-gray-600 leading-relaxed font-bold mb-4">{t.aboutText}</p>
-          <button className="text-white bg-pink-500 hover:bg-pink-700 font-bold rounded-full text-sm px-6 py-3 transition">
-            {t.more}
-          </button>
         </div>
       </section>
 
@@ -239,9 +232,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Join Button */}
+      {/* ✅ Join Button → /community */}
       <div className="mx-auto text-center pb-16 px-6">
-        <button type="button" className="text-white bg-[#5A3D58] hover:bg-[#4a3248] font-medium rounded-3xl text-sm px-8 py-3 transition-all duration-200">
+        <button
+          onClick={() => navigate("/community")}
+          type="button"
+          className="text-white bg-[#5A3D58] hover:bg-[#4a3248] font-medium rounded-3xl text-sm px-8 py-3 transition-all duration-200"
+        >
           {t.joinButton}
         </button>
       </div>

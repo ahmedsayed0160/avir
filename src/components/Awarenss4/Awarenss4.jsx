@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLanguage } from '../LanguageContext/LanguageContext';
 import axios from 'axios';
 
-const API_BASE = "http://avir1.runasp.net/api/Reminder";
+const API_BASE = "https://avir.runasp.net/api/Reminder";
 
 const ReminderCalendar = () => {
   const { lang } = useLanguage();

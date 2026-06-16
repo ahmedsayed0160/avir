@@ -1,18 +1,17 @@
 import React, { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../LanguageContext/LanguageContext'
 
 export default function AwarenessPage1() {
   const { lang } = useLanguage()
+  const navigate = useNavigate()
   
-  // Refs for videos
   const video1Ref = useRef(null)
   const video2Ref = useRef(null)
 
   const playVideo = (videoRef) => {
     if (videoRef.current) {
       videoRef.current.play()
-      // Scroll to video
       videoRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
   }
@@ -106,7 +105,11 @@ export default function AwarenessPage1() {
           <p className="mt-6 text-base md:text-xl font-light leading-relaxed text-slate-700">
             {t.heroDesc}
           </p>
-          <button className="mt-10 px-8 py-4 rounded-full bg-[#E91E63] text-white text-base md:text-lg shadow-lg transition-transform duration-200 hover:scale-95 hover:bg-[#c21750] capitalize">
+          {/* ✅ check now → /awarenss3 */}
+          <button
+            onClick={() => navigate("/awarenss3")}
+            className="mt-10 px-8 py-4 rounded-full bg-[#E91E63] text-white text-base md:text-lg shadow-lg transition-transform duration-200 hover:scale-95 hover:bg-[#c21750] capitalize"
+          >
             {t.checkNow}
           </button>
         </div>
@@ -117,7 +120,6 @@ export default function AwarenessPage1() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-4xl font-bold text-[#491326]">{t.whatIsTitle}</h2>
           <p className="mt-6 text-base md:text-xl text-[#4B5563] leading-relaxed">{t.whatIsDesc}</p>
-
           <div className="mt-10 rounded-lg p-6" style={{ background: "linear-gradient(90deg,#dbeafe 0%, #FCE7F3 100%)" }}>
             <h3 className="text-xl font-bold mb-6 text-left">{t.commonTypes}</h3>
             <div className="flex flex-wrap md:flex-nowrap justify-between gap-4">
@@ -182,23 +184,22 @@ export default function AwarenessPage1() {
         </div>
       </section>
 
-      {/* Educational Resources - WITH VIDEOS */}
+      {/* Educational Resources */}
       <section className="py-16 md:py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-center text-2xl md:text-3xl text-[#76072E] mb-10 font-bold">{t.resourcesTitle}</h2>
           <div className="flex flex-col md:flex-row gap-8">
-            
-            {/* Video 1: Early Detection */}
+
+            {/* Video 1 */}
             <div className="flex-1">
               <div className="border border-[#FA90B5] rounded-lg overflow-hidden bg-black">
-                <video 
+                <video
                   ref={video1Ref}
-                  controls 
+                  controls
                   className="w-full h-[250px] object-contain"
                   preload="metadata"
                 >
                   <source src="/videos/early-detection.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
                 </video>
                 <div className="p-6 bg-white">
                   <h3 className="text-[#B1476C] text-lg font-semibold mb-2">{t.video1Title}</h3>
@@ -206,7 +207,7 @@ export default function AwarenessPage1() {
                 </div>
               </div>
               <div className="flex justify-center mt-4">
-                <button 
+                <button
                   onClick={() => playVideo(video1Ref)}
                   className="group px-9 py-4 border border-[#FA90B5] rounded-2xl hover:bg-[#B1476C] transition hover:scale-90 cursor-pointer"
                 >
@@ -217,17 +218,16 @@ export default function AwarenessPage1() {
               </div>
             </div>
 
-            {/* Video 2: Statistics */}
+            {/* Video 2 */}
             <div className="flex-1">
               <div className="border border-[#FA90B5] rounded-lg overflow-hidden bg-black">
-                <video 
+                <video
                   ref={video2Ref}
-                  controls 
+                  controls
                   className="w-full h-[250px] object-contain"
                   preload="metadata"
                 >
                   <source src="/videos/statistics-2025.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
                 </video>
                 <div className="p-6 bg-white">
                   <h3 className="text-[#B1476C] text-lg font-semibold mb-2">{t.video2Title}</h3>
@@ -235,7 +235,7 @@ export default function AwarenessPage1() {
                 </div>
               </div>
               <div className="flex justify-center mt-4">
-                <button 
+                <button
                   onClick={() => playVideo(video2Ref)}
                   className="group px-9 py-4 border border-[#FA90B5] rounded-2xl hover:bg-[#B1476C] transition hover:scale-90 cursor-pointer"
                 >
@@ -252,7 +252,10 @@ export default function AwarenessPage1() {
 
       {/* Go to Awareness2 */}
       <section className="py-16 flex justify-center px-6">
-        <Link to="/awarenss2" className="bg-[#5A3D58] hover:bg-[#4a3248] text-white font-bold py-4 px-12 rounded-full shadow-lg transition-all duration-300 hover:scale-105 text-center text-lg">
+        <Link
+          to="/awarenss2"
+          className="bg-[#5A3D58] hover:bg-[#4a3248] text-white font-bold py-4 px-12 rounded-full shadow-lg transition-all duration-300 hover:scale-105 text-center text-lg"
+        >
           {t.goToAwareness}
         </Link>
       </section>

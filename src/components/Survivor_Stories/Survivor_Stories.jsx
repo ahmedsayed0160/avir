@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useLanguage } from '../LanguageContext/LanguageContext';
 
 const SurvivorStories = () => {
@@ -128,11 +127,10 @@ const SurvivorStories = () => {
   };
 
   return (
-    <div className="font-[Poppins] px-15 mt-20"
-style={{
-      background: "linear-gradient(to left, #f0dbdb, white , white)"
-    }}>
-
+    <div
+      className="font-[Poppins] px-15 mt-20"
+      style={{ background: "linear-gradient(to left, #f0dbdb, white, white)" }}
+    >
       {/* ================= Video Section ================= */}
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <h1 className="text-center capitalize font-semibold text-5xl py-3">
@@ -145,7 +143,7 @@ style={{
               autoPlay
               muted
               className="w-full rounded"
-            ></video>
+            />
           </div>
           <div className="video-content w-full lg:w-1/2 mt-4 lg:mt-0">
             <h2 className="capitalize font-semibold text-3xl">
@@ -155,14 +153,21 @@ style={{
               {t.video.description}
             </p>
 
-            {/* display video button */}
-            <Link
-              to="/full-story"
+            {/* ✅ الزرار بيشغل الفيديو بالصوت بدل ما يروح صفحة تانية */}
+            <button
+              onClick={() => {
+                const video = document.querySelector(".video-box video");
+                if (video) {
+                  video.muted = false;
+                  video.controls = true;
+                  video.play();
+                }
+              }}
               className="px-5 py-4 text-white rounded-xl inline-block"
-             style={{ background: "linear-gradient(#DB2777 , #F472B6)" }}
-              >
+              style={{ background: "linear-gradient(#DB2777, #F472B6)" }}
+            >
               {t.video.button}
-             </Link>
+            </button>
           </div>
         </div>
       </div>
@@ -213,7 +218,7 @@ style={{
               className="border-0 p-3 rounded-3xl mb-4 w-full outline-none bg-white/70 resize-none hover:bg-white transition-colors duration-300"
               value={newStory}
               onChange={(e) => setNewStory(e.target.value)}
-            ></textarea>
+            />
 
             <button
               onClick={handleShare}
