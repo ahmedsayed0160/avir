@@ -138,10 +138,20 @@ const SurvivorStories = () => {
         </h1>
         <div className="bg-white rounded-3xl shadow-lg p-6 md:p-10 flex flex-col lg:flex-row justify-center items-center gap-6">
           <div className="video-box w-full lg:w-1/2">
+            {/* ✅ التعديل هنا */}
             <video
               src="../Breast Cancer Survivor Stories And Their Advice.mp4"
               autoPlay
               muted
+              loop
+              playsInline
+              preload="auto"
+              ref={(el) => {
+                if (el) {
+                  el.muted = true;
+                  el.play().catch(() => {});
+                }
+              }}
               className="w-full rounded"
             />
           </div>
@@ -152,8 +162,7 @@ const SurvivorStories = () => {
             <p className="text-gray-700 leading-relaxed my-4 text-base">
               {t.video.description}
             </p>
-
-            {/* ✅ الزرار بيشغل الفيديو بالصوت بدل ما يروح صفحة تانية */}
+            {/* ✅ الزرار بيشغل الفيديو بالصوت */}
             <button
               onClick={() => {
                 const video = document.querySelector(".video-box video");

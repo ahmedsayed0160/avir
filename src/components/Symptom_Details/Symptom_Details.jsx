@@ -74,7 +74,6 @@ const SymptomDetails = () => {
     </div>
   );
 
-  // نسخة الموبايل من الـ WarningBox
   const WarningBoxMobile = () => (
     <div className="block md:hidden mx-4 mt-4">
       <div className="w-full bg-[#FEF2F2] border-[#FECACA] border-[1.5px] rounded-[20px] shadow-[0_4px_8px_rgba(0,0,0,0.1)] p-4">
@@ -101,9 +100,13 @@ const SymptomDetails = () => {
       >
         <i className="fa-solid fa-stethoscope mr-1"></i> {t.buttons.proceed}
       </Link>
-      <button className="w-full sm:w-[250px] h-[40px] bg-white text-[#E91E63] border border-[#E91E63] rounded-[10px] font-semibold text-[15px] cursor-pointer shadow-[0_4px_8px_rgba(0,0,0,0.2)]">
+      {/* ✅ التعديل هنا - اتغير من button لـ Link */}
+      <Link
+        to="/visual"
+        className="w-full sm:w-[250px] h-[40px] bg-white text-[#E91E63] border border-[#E91E63] rounded-[10px] font-semibold text-[15px] cursor-pointer shadow-[0_4px_8px_rgba(0,0,0,0.2)] flex items-center justify-center"
+      >
         <i className="fa-solid fa-arrow-left mr-1"></i> {t.buttons.back}
-      </button>
+      </Link>
     </div>
   );
 
@@ -117,7 +120,7 @@ const SymptomDetails = () => {
         <h1 className="m-auto ml-[10px] text-[#76072E] text-[1.5rem] font-bold">{t.header}</h1>
       </header>
 
-      {/* Section 1 - Responsive (معدّل بس) */}
+      {/* Section 1 */}
       <div className="w-full max-w-6xl mx-auto px-4 py-10">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           <div className="flex-1 w-full">

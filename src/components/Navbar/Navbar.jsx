@@ -7,7 +7,7 @@ import logo from "../../../public/Pink_Breast_Cancer_Awareness_Instagram_Post__8
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { userLogin, logout } = useContext(UserContext); // ← استخدم logout من Context
+  const { userLogin, logout } = useContext(UserContext);
   const { lang, setLang } = useLanguage();
 
   const [showServices, setShowServices] = useState(false);
@@ -21,7 +21,7 @@ export default function Navbar() {
   const mobileMenuRef = useRef(null);
 
   function signout() {
-    logout(); // ← استخدم logout من Context
+    logout();
     setShowUserMenu(false);
     navigate("/login");
   }
@@ -29,7 +29,6 @@ export default function Navbar() {
   useEffect(() => {
     function handleClickOutside(event) {
       if (menuOpen && mobileMenuRef.current?.contains(event.target)) return;
-      
       if (
         servicesRef.current && !servicesRef.current.contains(event.target) &&
         communityRef.current && !communityRef.current.contains(event.target) &&
@@ -187,17 +186,19 @@ export default function Navbar() {
               <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
               <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
             </svg>
-            <span className="absolute -top-1 -right-1 w-4 h-4  text-white text-[10px] font-bold rounded-full flex items-center justify-center"></span>
+            <span className="absolute -top-1 -right-1 w-4 h-4 text-white text-[10px] font-bold rounded-full flex items-center justify-center"></span>
           </button>
 
           {userLogin ? (
             <div className="relative" ref={userMenuRef}>
               <button onClick={() => setShowUserMenu(!showUserMenu)} className="flex text-sm rounded-full focus:ring-4 focus:ring-pink-300">
-                <img 
-                  className="w-10 h-10 rounded-full object-cover" 
-                  src={userLogin?.image || userLogin?.avatar || "/docs/images/people/profile-picture-3.jpg"} 
-                  alt="user" 
-                />
+                {/* ✅ التعديل هنا */}
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-pink-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E91E63" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
               </button>
               {showUserMenu && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 text-gray-800">

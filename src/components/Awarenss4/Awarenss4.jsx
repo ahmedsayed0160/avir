@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useLanguage } from '../LanguageContext/LanguageContext';
 import axios from 'axios';
+import { UserContext } from "../../Context/UserContext";
 
 const API_BASE = "https://avir.runasp.net/api/Reminder";
 
 const ReminderCalendar = () => {
   const { lang } = useLanguage();
+  const { user } = useContext(UserContext);
   const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
@@ -16,7 +18,6 @@ const ReminderCalendar = () => {
   const [loading, setLoading] = useState(false);
   const [userId] = useState(1);
 
-  // 🎯 Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -154,7 +155,7 @@ const ReminderCalendar = () => {
       const payload = {
         id: 0,
         userID: userId,
-        email: "user@example.com",
+        email: user?.email || "user@example.com",
         periodStartDate: periodStartDate.toISOString(),
         reminderDate: periodStartDate.toISOString(),
       };
